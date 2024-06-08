@@ -4,11 +4,24 @@
 
 Create a `.env` file. Please look at the `.env.example` and adjust the connection settings for the database.
 
+The `DATABASE_URL` should look like:
+
+```
+DATABASE_URL=postgresql+asyncpg://{user}:{password}@db/{databasename}
+```
+
 ### Build and run the app with Docker Compose
 
 ```
 docker compose build
 docker compose up -d
+```
+
+### Build app without Docker
+
+```
+pip install --no-cache-dir -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 ## Project structure
